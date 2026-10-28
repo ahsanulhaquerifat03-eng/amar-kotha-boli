@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>আমার কথা বলি</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07163a;--royal:#1d4ed8;--sky:#7fb2ff;--gold:#d9b45a;--bg:#eef3fc;--ink:#0d1b3d;--mute:#5b6b8c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hind Siliguri',system-ui,sans-serif;line-height:1.6;padding-top:env(safe-area-inset-top,0px)}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(90deg,var(--navy),#0f2a6b);color:#fff;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:20px}
+header span{font-size:14px;font-weight:500;color:#cfe0ff;display:flex;gap:10px;align-items:center}
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:56px 20px 90px;background:linear-gradient(180deg,#050f2b,#0b2260 55%,#1d4ed8 120%)}
+.hero svg{position:absolute;left:0;bottom:0;width:100%;height:55%}.hero>*{position:relative}
+.hero h1{margin:0 0 8px;font-size:clamp(30px,8vw,52px)}.hero p{margin:0;font-size:clamp(16px,4vw,20px);color:#cfe0ff}.hero .tag{color:var(--gold);font-weight:600}
+.own{display:inline-block;margin-bottom:12px;padding:3px 16px;border:1px solid var(--gold);color:var(--gold);border-radius:999px;font-size:13px;letter-spacing:1.2px;background:rgba(217,180,90,.08)}
+main{max-width:640px;margin:-48px auto 0;padding:0 14px 40px;position:relative}
+.card{background:#fff;border-radius:18px;box-shadow:0 8px 28px rgba(7,22,58,.12);padding:18px}
+textarea,input{width:100%;border:1.5px solid #d3def5;border-radius:12px;padding:11px;font:inherit;outline:none;margin-bottom:8px}
+textarea{font-family:'Noto Serif Bengali',serif;font-size:17px;resize:none;min-height:96px;margin:0}
+textarea:focus,input:focus{border-color:var(--royal);box-shadow:0 0 0 3px rgba(29,78,216,.15)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:10px}
+.cnt,.note{color:var(--mute);font-size:14px}.note{text-align:center;font-size:15px}
+button{font:inherit;cursor:pointer;border:0}
+.btn{background:linear-gradient(135deg,var(--royal),#0b3bb0);color:#fff;padding:10px 22px;border-radius:999px;font-weight:600}
+.btn.sm{padding:5px 16px;font-size:14px}.btn[disabled]{opacity:.5}
+.btn.g{background:#fff;color:var(--ink);border:1.5px solid #d3def5;width:100%;margin-bottom:10px}
+.link{background:none;color:var(--royal);font-size:14px;padding:0}
+.msg{margin-top:10px;font-size:15px;color:#9a3412;background:#fff4e5;border-radius:10px;padding:8px 12px}.msg.ok{color:#14532d;background:#e6f7ec}
+.tl{margin-top:26px;position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--sky),#c9d8f5)}
+.post{position:relative;margin-bottom:16px;animation:in .4s ease both}
+.post::before{content:"";position:absolute;left:-22px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--royal);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--sky)}
+.post p{margin:0 0 12px;font-family:'Noto Serif Bengali',serif;font-size:18px;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.rx{display:flex;gap:8px;margin-bottom:10px}
+.rb{background:#eef3fc;border-radius:999px;padding:5px 14px;font-size:16px;border:1.5px solid transparent}.rb.on{background:#dbe7ff;border-color:var(--royal);font-weight:600}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid #e6edfa;padding-top:10px;font-size:14px}
+.who{font-weight:600;color:var(--royal)}.when{color:var(--mute)}
+.rep{background:none;color:var(--mute);font-size:13px;padding:2px 6px}.rep.del{color:#b91c1c}
+.more{display:block;margin:18px auto 0;background:#fff;color:var(--royal);border:1.5px solid var(--royal);padding:9px 24px;border-radius:999px;font-weight:600}
+dialog{border:0;border-radius:18px;padding:22px;width:min(92vw,380px);box-shadow:0 20px 60px rgba(7,22,58,.4)}
+dialog::backdrop{background:rgba(5,15,43,.6)}
+#dash{width:min(94vw,440px)}.kp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.kp div{background:#eef3fc;border-radius:12px;padding:10px;text-align:center}.kp b{display:block;font-size:24px;color:var(--royal)}.kp small{color:var(--mute)}
+.bar{display:flex;align-items:center;gap:8px;font-size:13px;margin:5px 0}.bar i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--royal),var(--sky));min-width:3px}
+.vc{display:inline-block;margin-top:8px;padding:2px 14px;border:1px solid #1d3a7a;border-radius:999px;font-size:14px}
+footer{background:var(--navy);color:#9db6ea;text-align:center;padding:26px 16px;font-size:15px}footer b{color:var(--gold)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>আমার কথা বলি<span id="auth"></span></header>
+<section class="hero">
+<svg viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><g fill="#06133a"><rect x="0" y="70" width="38" height="50"/><rect x="42" y="45" width="30" height="75"/><rect x="76" y="62" width="44" height="58"/><rect x="124" y="30" width="28" height="90"/><rect x="156" y="58" width="40" height="62"/><rect x="200" y="40" width="34" height="80"/><rect x="238" y="66" width="46" height="54"/><rect x="288" y="24" width="30" height="96"/><rect x="322" y="52" width="36" height="68"/><rect x="362" y="64" width="38" height="56"/></g><g fill="#ffd978" opacity=".85"><rect x="48" y="55" width="4" height="4"/><rect x="58" y="70" width="4" height="4"/><rect x="130" y="42" width="4" height="4"/><rect x="138" y="62" width="4" height="4"/><rect x="206" y="52" width="4" height="4"/><rect x="216" y="74" width="4" height="4"/><rect x="294" y="36" width="4" height="4"/><rect x="304" y="60" width="4" height="4"/><rect x="330" y="64" width="4" height="4"/><rect x="170" y="72" width="4" height="4"/><rect x="372" y="78" width="4" height="4"/></g></svg>
+<h1>আমার কথা বলি</h1>
+<div class="own">Owner &amp; CEO · রিফাত মোল্লা</div>
+<p class="tag">আপনার কথা, সবার জন্য।</p>
+<p>মনের কথা লিখে রাখুন — সবাই পড়বে, সবাই জানবে।</p>
+</section>
+<main>
+<div class="card" id="write"></div>
+<div class="tl" id="tl"><p class="note">লোড হচ্ছে…</p></div>
+<button class="more" id="more" hidden>আরও দেখুন</button>
+</main>
+<footer>© আমার কথা বলি — মনের কথা, মনের ভাষায়।<br>Powered by <b>Rifat Molla</b> · Owner &amp; CEO<br><span class="vc" id="vc">মোট ভিজিটর: —</span></footer>
+
+<dialog id="dlg">
+<h3 style="margin-top:0">লগইন / একাউন্ট খুলুন</h3>
+<button class="btn g" id="gbtn">Google দিয়ে লগইন</button>
+<input id="nm" placeholder="আপনার নাম (নতুন একাউন্টের জন্য)">
+<input id="em" type="email" placeholder="ইমেইল">
+<input id="pw" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)">
+<div class="row"><button class="btn" id="li">লগইন</button><button class="link" id="su">নতুন একাউন্ট খুলুন</button></div>
+<div id="dm"></div>
+<div class="row"><button class="link" id="cl" style="color:var(--mute)">বন্ধ করুন</button></div>
+</dialog>
+<dialog id="dash"><h3 style="margin:0">ড্যাশবোর্ড · রিফাত মোল্লা</h3><div id="dbody"></div><div class="row"><button class="link" id="dcl">বন্ধ করুন</button></div></dialog>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,doc,query,orderBy,limit,onSnapshot,writeBatch,serverTimestamp,getDoc,updateDoc,deleteDoc,setDoc,increment,getCountFromServer} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ====== 1) Firebase console theke paowa config ekhane boshao ======
+const firebaseConfig={
+  apiKey:"AIzaSyAD0Jv9l74a1bDmE4cBkbGBvgCFkeHApr4",
+  authDomain:"amar-kotha-boli.firebaseapp.com",
+  projectId:"amar-kotha-boli",
+  storageBucket:"amar-kotha-boli.firebasestorage.app",
+  messagingSenderId:"994269834362",
+  appId:"1:994269834362:web:7fd1cbd39657e132b41fc3"
+};
+// ====== 2) Nijer admin Google email (firestore.rules-er email-er sathe mil thakte hobe) ======
+const ADMIN_EMAIL="mdahsanulhaquerifat99@gmail.com";
+
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id);
+const bn=s=>String(s).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const DAY=864e5,MAX=200,BAD=/(https?:|www\.|\.com|\.net|\.xyz|t\.me|whatsapp|casino|betting)/i;
+let me=null,isAdmin=false,lim=20,unsub=null,posts=[],reacts={};
+
+const ago=ts=>{const s=Math.max(1,Math.floor((Date.now()-ts)/1000));if(s<60)return'এইমাত্র';const m=Math.floor(s/60);if(m<60)return bn(m)+' মিনিট আগে';const h=Math.floor(m/60);if(h<24)return bn(h)+' ঘণ্টা আগে';const d=Math.floor(h/24);return d<30?bn(d)+' দিন আগে':bn(new Date(ts).toLocaleDateString('en-GB'));};
+const left=ms=>bn(Math.floor(ms/36e5))+' ঘণ্টা '+bn(Math.ceil((ms%36e5)/6e4))+' মিনিট';
+const say=(id,t,ok)=>$(id).innerHTML=t?'<div class="msg'+(ok?' ok':'')+'">'+t+'</div>':'';
+
+// ---------- Login ----------
+const errBn=e=>({'auth/invalid-credential':'ইমেইল বা পাসওয়ার্ড ভুল।','auth/email-already-in-use':'এই ইমেইলে আগেই একাউন্ট আছে।','auth/weak-password':'পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে।','auth/invalid-email':'ইমেইল সঠিক নয়।','auth/popup-closed-by-user':'লগইন বাতিল হয়েছে।'}[e.code]||'সমস্যা হয়েছে, আবার চেষ্টা করুন।');
+$('gbtn').onclick=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider());$('dlg').close();}catch(e){say('dm',errBn(e));}};
+$('li').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('em').value.trim(),$('pw').value);$('dlg').close();}catch(e){say('dm',errBn(e));}};
+$('su').onclick=async()=>{const n=$('nm').value.trim();if(!n)return say('dm','আগে আপনার নাম লিখুন।');try{const c=await createUserWithEmailAndPassword(auth,$('em').value.trim(),$('pw').value);await updateProfile(c.user,{displayName:n.slice(0,60)});me=auth.currentUser;renderTop();$('dlg').close();}catch(e){say('dm',errBn(e));}};
+$('cl').onclick=()=>$('dlg').close();
+
+onAuthStateChanged(auth,u=>{me=u;isAdmin=!!u&&u.email===ADMIN_EMAIL&&u.emailVerified;renderTop();draw();});
+function renderTop(){
+ $('auth').innerHTML=me?'<span>'+esc(me.displayName||me.email.split('@')[0])+(isAdmin?' · মালিক':'')+'</span>'+(isAdmin?'<button class="btn sm" id="dbtn">ড্যাশবোর্ড</button>':'')+'<button class="btn sm" id="so">লগআউট</button>':'<button class="btn sm" id="si">লগইন</button>';
+ if($('so'))$('so').onclick=()=>signOut(auth);if($('dbtn'))$('dbtn').onclick=openDash;if($('si'))$('si').onclick=()=>$('dlg').showModal();
+ const w=$('write');
+ if(!me){w.innerHTML='<p class="note">পড়া সবার জন্য খোলা। লিখতে হলে <button class="link" id="si2">লগইন করুন</button>।</p>';$('si2').onclick=()=>$('dlg').showModal();return;}
+ w.innerHTML='<textarea id="t" maxlength="'+MAX+'" placeholder="আপনার মনের কথা লিখুন..."></textarea><div class="row"><span class="cnt" id="c">'+bn(0)+'/'+bn(MAX)+'</span><button class="btn" id="pub">প্রকাশ করুন</button></div><div id="m"></div>';
+ $('t').oninput=e=>$('c').textContent=bn(e.target.value.length)+'/'+bn(MAX);$('pub').onclick=publish;
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ---------- Post ----------
+async function publish(){
+ const t=$('t').value.trim();
+ if(!t)return say('m','আগে কিছু লিখুন।');
+ if(t.split('\n').length>3)return say('m','২-৩ লাইনের মধ্যে লিখুন।');
+ if(BAD.test(t))return say('m','লিংক বা স্প্যাম শব্দ এখানে লেখা যাবে না।');
+ $('pub').disabled=true;
+ try{
+  const us=await getDoc(doc(db,'users',me.uid));
+  if(us.exists()&&!isAdmin){const w=us.data().last.toMillis()+DAY-Date.now();if(w>0){say('m','আপনি আবার লিখতে পারবেন '+left(w)+' পর।');return;}}
+  const b=writeBatch(db);
+  b.set(doc(collection(db,'posts')),{text:t,uid:me.uid,name:me.displayName||me.email.split('@')[0],ts:serverTimestamp(),reports:0});
+  b.set(doc(db,'users',me.uid),{last:serverTimestamp()});
+  await b.commit();
+  $('t').value='';$('c').textContent=bn(0)+'/'+bn(MAX);say('m','আপনার কথা প্রকাশিত হয়েছে। ধন্যবাদ!',true);
+ }catch(e){say('m',e.code==='permission-denied'?'এখন লেখা যাচ্ছে না (২৪ ঘণ্টার নিয়ম বা অনুমতি)।':'সমস্যা হয়েছে, আবার চেষ্টা করুন।');}
+ finally{const b=$('pub');if(b)b.disabled=false;}
+}
+
+// ---------- Timeline ----------
+function listen(){
+ if(unsub)unsub();
+ unsub=onSnapshot(query(collection(db,'posts'),orderBy('ts','desc'),limit(lim)),s=>{
+  posts=s.docs.map(x=>({id:x.id,...x.data({serverTimestamps:'estimate'})}));draw();
+ },()=>$('tl').innerHTML='<p class="note">লেখাগুলো এখন লোড করা যাচ্ছে না।</p>');
+}
+onSnapshot(collection(db,'reacts'),s=>{reacts={};s.docs.forEach(x=>{const v=x.data(),r=reacts[v.pid]||(reacts[v.pid]={c:{},mine:null});r.c[v.e]=(r.c[v.e]||0)+1;if(me&&v.uid===me.uid)r.mine=v.e;});draw();});
+async function react(pid,e,mine){if(!me)return $('dlg').showModal();const ref=doc(db,'reacts',pid+'_'+me.uid);try{if(mine===e)await deleteDoc(ref);else await setDoc(ref,{pid,uid:me.uid,e});}catch(x){}}
+
+function draw(){
+ const tl=$('tl');tl.innerHTML='';
+ const vis=posts.filter(d=>isAdmin||(d.reports||0)<3);
+ if(!vis.length)tl.innerHTML='<p class="note">এখনো কেউ কিছু লেখেনি। প্রথম কথাটি আপনিই বলুন!</p>';
+ vis.forEach(d=>{
+  const a=document.createElement('div');a.className='card post';
+  const p=document.createElement('p');p.textContent=d.text;
+  const bar=document.createElement('div');bar.className='rx';
+  const R=reacts[d.id]||{c:{},mine:null};
+  ['🙂','😊','😌'].forEach(e=>{const b=document.createElement('button');b.className='rb'+(R.mine===e?' on':'');b.textContent=e+' '+bn(R.c[e]||0);b.onclick=()=>react(d.id,e,R.mine);bar.append(b);});
+  const m=document.createElement('div');m.className='meta';
+  const w=document.createElement('span');w.className='who';w.textContent='— '+(d.name||'লেখক');
+  const t=document.createElement('span');t.className='when';t.textContent=ago(d.ts?d.ts.toMillis():Date.now());
+  const r=document.createElement('button');r.className='rep';r.textContent='রিপোর্ট';
+  r.onclick=async()=>{if(!me)return $('dlg').showModal();const k='rp_'+d.id;if(localStorage.getItem(k))return;try{await updateDoc(doc(db,'posts',d.id),{reports:increment(1)});localStorage.setItem(k,1);r.textContent='ধন্যবাদ';}catch(e){}};
+  m.append(w,t,r);
+  if(isAdmin){const x=document.createElement('button');x.className='rep del';x.textContent='মুছুন ('+bn(d.reports||0)+' রিপোর্ট)';x.onclick=async()=>{if(confirm('এই লেখাটি মুছে ফেলবেন?'))try{await deleteDoc(doc(db,'posts',d.id));}catch(e){}};m.append(x);}
+  a.append(p,bar,m);tl.append(a);
+ });
+ $('more').hidden=posts.length<lim;
+}
+$('more').onclick=()=>{lim+=20;listen();};
+$('dcl').onclick=()=>$('dash').close();
+const dkey=t=>new Date(t).toLocaleDateString('en-CA');
+// ---------- Visitor count (ekta browser, din-e ekbar) ----------
+async function countVisit(){
+ const k=dkey(Date.now());if(localStorage.getItem('akb_day')===k)return;
+ const first=!localStorage.getItem('akb_seen');
+ const inc={visits:increment(1),uniq:increment(first?1:0)};
+ try{await setDoc(doc(db,'stats','d_'+k),inc,{merge:true});await setDoc(doc(db,'stats','total'),inc,{merge:true});
+  localStorage.setItem('akb_day',k);localStorage.setItem('akb_seen','1');}catch(e){}
+}
+onSnapshot(doc(db,'stats','total'),s=>{$('vc').textContent='মোট ভিজিটর: '+bn(s.exists()?s.data().uniq||0:0);},()=>{});
+async function openDash(){
+ $('dash').showModal();$('dbody').innerHTML='<p class="note">লোড হচ্ছে…</p>';
+ try{
+  const days=[...Array(7)].map((_,i)=>dkey(Date.now()-i*DAY));
+  const [pc,rc,tt,...dd]=await Promise.all([getCountFromServer(collection(db,'posts')),getCountFromServer(collection(db,'reacts')),getDoc(doc(db,'stats','total')),...days.map(k=>getDoc(doc(db,'stats','d_'+k)))]);
+  const T=tt.exists()?tt.data():{visits:0,uniq:0},v=dd.map(x=>x.exists()?x.data().visits||0:0),mx=Math.max(1,...v);
+  $('dbody').innerHTML='<div class="kp"><div><b>'+bn(v[0])+'</b><small>আজকের ভিজিট</small></div><div><b>'+bn(T.visits||0)+'</b><small>মোট ভিজিট</small></div><div><b>'+bn(T.uniq||0)+'</b><small>মোট ভিজিটর</small></div><div><b>'+bn(pc.data().count)+'</b><small>মোট লেখা</small></div><div><b>'+bn(rc.data().count)+'</b><small>মোট রিয়্যাকশন</small></div></div><b>গত ৭ দিন</b>'+days.map((k,i)=>'<div class="bar"><span style="width:78px">'+bn(k.slice(5).replace('-','/'))+'</span><i style="width:'+Math.round(v[i]/mx*60)+'%"></i><span>'+bn(v[i])+'</span></div>').join('');
+ }catch(e){$('dbody').innerHTML='<p class="note">ড্যাশবোর্ড লোড হয়নি। firestore.rules আপডেট করেছেন কিনা দেখুন।</p>';}
+}
+countVisit();
+setInterval(draw,60000);
+renderTop();listen();
+</script>
+</body>
+</html>
